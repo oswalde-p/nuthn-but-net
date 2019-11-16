@@ -3,16 +3,14 @@
 - LB
 - Internal service
 - DB
-- IP’s / Ranges *
-
-### *
-Figure out what private IP ranges you can use
-How big each network needs to be (what ips you can use)
-Reserved IP’s (what are they)
-Useable IP space
-How to add that to the diagram
-How do you write a network ip address
-How do you write a network range
+- IP’s / Ranges
+  - Figure out what private IP ranges you can use
+  - How big each network needs to be (what ips you can use)
+  - Reserved IP’s (what are they)
+  - Useable IP space
+  - How to add that to the diagram
+  - How do you write a network ip address
+  - How do you write a network range
 
 2. Implement that network with docker-compose
 
