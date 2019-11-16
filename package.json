@@ -1,0 +1,17 @@
+{
+  "name": "nuthn-but-net",
+  "version": "1.0.0",
+  "description": "1. Draw a network diagram which contains: - LB - Internal service - DB - IP’s / Ranges *",
+  "main": "index.js",
+  "scripts": {
+    "dev": "PORT=1 MONGO_URI='mongodb://localhost:27017/test' nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "ip": "^1.1.5",
+    "mongoose": "^5.7.11"
+  }
+}

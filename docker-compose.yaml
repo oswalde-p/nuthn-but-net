@@ -1,0 +1,27 @@
+version: '2.1'
+networks:
+  inkanet:
+    ipam:
+      config:
+        - subnet: 192.168.0.0/24
+          gateway: 192.168.0.1
+
+services:
+  service:
+    build: .
+    ports:
+      - "1:1"
+    command: node index.js
+    networks:
+      inkanet:
+        ipv4_address: 192.18.0.3
+    environment:
+      - PORT=1
+      - MONGO_URI=mongodb://db/dogs
+
+  db:
+    image: mongo:4.0
+    networks:
+      inkanet:
+        ipv4_address: 192.168.0.2
+
