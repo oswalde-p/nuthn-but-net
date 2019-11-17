@@ -7,21 +7,38 @@ networks:
           gateway: 192.168.0.1
 
 services:
-  service:
-    build: .
-    ports:
-      - "1:1"
-    command: node index.js
-    networks:
-      inkanet:
-        ipv4_address: 192.18.0.3
-    environment:
-      - PORT=1
-      - MONGO_URI=mongodb://db/dogs
-
-  db:
-    image: mongo:4.0
+  load-balancer:
+    image: traefik:v1.7
+    command: --docker.watch --api --docker.exposedbydefault=false --docker --defaultentrypoints="http" --entryPoints="Name:http Address::80"
     networks:
       inkanet:
         ipv4_address: 192.168.0.2
+    ports:
+    - "80:80"     #The HTTP port
+    - "8080:8080" #The Web UI (enabled by --api)
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock:cached #So that Traefik can listen to the Docker events
+
+  service:
+    build: .
+    command: node index.js
+    networks:
+      inkanet:
+        ipv4_address: 192.168.0.3
+    environment:
+      - PORT=1
+      - MONGO_URI=mongodb://192.168.0.4/dogs
+    labels:
+      - traefik.frontend.rule=Host:jason.local
+      - traefik.enable=true
+      - traefik.port=1
+
+  db:
+    image: mongo:4.0
+    command:
+      - '--logpath'
+      - '/dev/null'
+    networks:
+      inkanet:
+        ipv4_address: 192.168.0.4
 
