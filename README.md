@@ -15,7 +15,7 @@
 2. Implement that network with docker-compose
 
 ## 1. Diagram
-It's [on draw.io](https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1#G15duoShkEwiMZYdJx4AoJRMauaZW6e5qq)
+It's [on draw.io](https://drive.google.com/file/d/11ibrkIwYJfZSpUsy1eGidM6WOr4baRRa/view?usp=sharing)
 
 ## 2. docker-compose implementation
 see https://docs.docker.com/compose/networking/
